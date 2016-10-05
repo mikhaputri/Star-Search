@@ -5,12 +5,21 @@
 //  Created by Mikha Yupikha on 03/10/2016.
 //  Copyright © 2016 Mikha Yupikha. All rights reserved.
 //
+// Calculate the average of five judge scores exclude the highest and lowest score
+// Show the highest score, lowest score and the result of the points
 
 #include <iostream>
 using namespace std;
 
 
 void getJudgeData ();
+void calcScore(double, double, double, double, double);
+int findLowest(int, int, int, int, int);
+int findHighest(int, int, int, int, int);
+
+int currentNumber;
+double number1, number2, number3, number4, number5;
+
 
 int main ()
 {
@@ -18,14 +27,13 @@ int main ()
     getJudgeData();
     findLowest(number1, number2, number3, number4, number5);
     findHighest(number1, number2, number3, number4, number5);
+    calcScore(number1, number2, number3, number4, number5);
     return 0;
     
 }
 
 void getJudgeData ()
 {
-    float number1, number2, number3, number4, number5, totalscore;
-    
     cin>>  number1 >> number2 >> number3 >> number4 >> number5;
     
     if (number1<0 || number2<0 || number3<0 || number4<0 || number5<0)
@@ -38,6 +46,8 @@ void getJudgeData ()
         cout<< "Scores cannot be more than 10.";
         return;
     }
+    else
+    {
         return;
     }
     
@@ -81,7 +91,7 @@ int findHighest(int number1, int number2, int number3, int number4, int number5)
 		highestNumber = number3;
 	} else if(highestNumber < number4)
 	{
-		highestNumber = number4;N
+		highestNumber = number4;
 	} else if(highestNumber < number5)
 	{
 		highestNumber = number5;
@@ -89,7 +99,8 @@ int findHighest(int number1, int number2, int number3, int number4, int number5)
 	return highestNumber;
 }
 
-void calcScore(double number1, double number2, double number3, double number4, double number5){
+void calcScore(double number1, double number2, double number3, double number4, double number5)
+{
 	int highestNumber = findHighest(number1, number2, number3, number4, number5);
 	int lowestNumber = findLowest(number1, number2, number3, number4, number5);
 	double totalScore = number1+number2+number3+number4+number5;
